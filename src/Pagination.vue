@@ -3,8 +3,8 @@
       v-show="carousel.pageCount > 1"
        class="indicator"
         role="tablist" 
-        :style="dotContainerStyle">
-      <button
+        >
+      <div
         v-for="(page, index) in paginationCount"
         :key="`${page}_${index}`"
         class="bead"
@@ -18,7 +18,8 @@
         :data-active="isCurrentDot(index) ? 'true' : 'false'"
         :data-prev="carousel.currentPage >= index && index !== 0"
         :data-first="index === 1"
-      ></button>
+        :style="{'--index':index}"
+      ></div>
     </div>
 </template>
 
@@ -60,6 +61,9 @@ export default {
         margin: "0 auto",
         "white-space": "nowrap"
       };
+    },
+    cssVar(index) {
+      return { "--index": index };
     }
   },
   methods: {
@@ -150,7 +154,8 @@ export default {
   justify-content: center;
   height: 12px;
   transition: all 0.2s;
-
+  display: flex;
+  flex-direction: row;
   bottom: 3.125rem;
   z-index: 4;
 }
