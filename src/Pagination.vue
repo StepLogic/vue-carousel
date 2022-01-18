@@ -3,6 +3,7 @@
       v-show="carousel.pageCount > 1"
        class="indicator"
         role="tablist" 
+        :data-position='paginationPropertyBasedOnPosition'
         >
       <div
         v-for="(page, index) in paginationCount"
@@ -35,9 +36,9 @@ export default {
       return paginationPosition;
     },
     paginationPropertyBasedOnPosition() {
-      return this.carousel.paginationPosition.indexOf("top") >= 0
+      return this.carousel.paginationPosition.indexOf("left") >= 0
         ? "bottom"
-        : "top";
+        : "left";
     },
     paginationCount() {
       return this.carousel && this.carousel.scrollPerPage
@@ -158,13 +159,22 @@ export default {
   transition: all 0.2s;
   display: flex;
   flex-direction: row;
-  bottom: 3.125rem;
   z-index: 4;
 }
-
+.indicator[data-position="bottom"] {
+  bottom: 3.125rem;
+}
+.indicator[data-position="left"] {
+  bottom: 52vh;
+  left: 3.125rem;
+}
 @media only screen and (max-width: 600px) {
-  .indicator {
+  .indicator[data-position="bottom"] {
     bottom: 1.75rem;
+  }
+  .indicator[data-position="left"] {
+    bottom: 52vh;
+    left: 1.75rem;
   }
 }
 .bead {
