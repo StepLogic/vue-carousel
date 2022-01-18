@@ -16,7 +16,7 @@
         :aria-selected="isCurrentDot(index) ? 'true' : 'false'"
         v-on:click="goToPage(index)"
         :data-active="isCurrentDot(index) ? 'true' : 'false'"
-        :data-prev="carousel.currentPage <= index && index !== 0"
+        :data-prev="isPrevDot(index) ? 'true':'false'"
         :data-first="index === 0"
         :style="{'--index':carousel.currentPage}"
       ></div>
@@ -88,7 +88,9 @@ export default {
     isCurrentDot(index) {
       return index === this.carousel.currentPage;
     },
-
+    isPrevDot(index) {
+      return index >= this.carousel.currentPage;
+    },
     /**
      * Generate dot title
      * @param {number} index - dot index
