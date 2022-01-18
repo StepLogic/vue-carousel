@@ -143,41 +143,47 @@ export default {
 };
 </script>
 
-<style>
-/* .VueCarousel-pagination {
+<style scoped>
+.indicator {
+  position: absolute;
   width: 100%;
-  text-align: center;
+  justify-content: center;
+  height: 12px;
+  transition: all 0.2s;
+
+  bottom: 3.125rem;
+  z-index: 4;
 }
 
-.VueCarousel-pagination--top-overlay {
-  position: absolute;
-  top: 0;
+@media only screen and (max-width: 600px) {
+  .indicator {
+    bottom: 1.75rem;
+  }
 }
-
-.VueCarousel-pagination--bottom-overlay {
-  position: absolute;
-  bottom: 0;
+.bead {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  z-index: 2;
+  background-color: rgba(196, 196, 196, 0.7);
+  margin-inline: 2.5px;
+  transition: all 0.2s;
+  visibility: visible;
 }
-
-.VueCarousel-dot-container {
-  display: inline-block;
-  margin: 0 auto;
-  padding: 0;
+.bead[data-active="true"] {
+  width: 12px !important;
+  height: 12px;
+  background-color: white;
 }
-
-.VueCarousel-dot {
-  display: inline-block;
-  cursor: pointer;
-  appearance: none;
-  border: none;
-  background-clip: content-box;
-  box-sizing: content-box;
-  padding: 0;
-  border-radius: 100%;
-  outline: none;
+.bead[data-prev="true"] {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(calc(var(--index) * 0.5px));
 }
-
-.VueCarousel-dot:focus {
-  outline: 1px solid lightblue;
-} */
+.bead[data-first="true"] {
+  width: calc(var(--index) * -15px);
+  border-radius: 6px;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
 </style>
