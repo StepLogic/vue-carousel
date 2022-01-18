@@ -89,7 +89,7 @@ export default {
       return index === this.carousel.currentPage;
     },
     isPrevDot(index) {
-      return index >= this.carousel.currentPage;
+      return index <= this.carousel.currentPage;
     },
     /**
      * Generate dot title
