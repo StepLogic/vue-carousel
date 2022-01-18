@@ -4,7 +4,7 @@
        class="indicator"
         role="tablist" 
         >
-      <div
+      <button
         v-for="(page, index) in paginationCount"
         :key="`${page}_${index}`"
         class="bead"
@@ -18,8 +18,8 @@
         :data-active="isCurrentDot(index) ? 'true' : 'false'"
         :data-prev="carousel.currentPage >= index && index !== 0"
         :data-first="index === 1"
-        :style="{'--index':index}"
-      ></div>
+        :style="{'--index':carousel.currentPage}"
+      ></button>
     </div>
 </template>
 
@@ -174,6 +174,7 @@ export default {
   margin-inline: 2.5px;
   transition: all 0.2s;
   visibility: visible;
+  border: none;
 }
 .bead[data-active="true"] {
   width: 12px !important;
@@ -186,7 +187,7 @@ export default {
   transform: translateX(calc(var(--index) * 0.5px));
 }
 .bead[data-first="true"] {
-  width: calc(var(--index) * -15px);
+  width: calc(var(--index) * -25px);
   border-radius: 6px;
   opacity: 1 !important;
   visibility: visible !important;
