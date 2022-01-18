@@ -10,7 +10,7 @@
     "dev:build": "vue-play build",
     "docs:build": "npm run build && rm -rf ./docs/public && mkdir ./docs/public/ && cd ./docs/public/ && git init && git remote add origin git@github.com:SSENSE/vue-carousel.git && git fetch && git checkout -f gh-pages && cd .. && npm install && ./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo generate",
     "lint": "prettier-eslint --write \"src/**/?(*.js|*.vue)\" || exit 1",
-    "precommit": "lint-staged && npm run test",
+    "precommit": "lint-staged",
     "test": "npm run test:client",
     "test:client": "jest --config tests/client.jest.json",
     "test:client:coverage": "jest --config tests/client.jest.json --coverage",
