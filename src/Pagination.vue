@@ -1,26 +1,25 @@
 <template>
-  <div
-    v-show="carousel.pageCount > 1"
-    class="VueCarousel-pagination"
-    v-bind:class="{ [`VueCarousel-pagination--${paginationPositionModifierName}`]: paginationPositionModifierName }"
-  >
-    <div class="VueCarousel-dot-container" role="tablist" :style="dotContainerStyle">
+     <div  
+      v-show="carousel.pageCount > 1"
+       class="indicator"
+        role="tablist" 
+        :style="dotContainerStyle">
       <button
         v-for="(page, index) in paginationCount"
         :key="`${page}_${index}`"
-        class="VueCarousel-dot"
+        class="bead"
         aria-hidden="false"
         role="tab"
         :title="getDotTitle(index)"
         :value="getDotTitle(index)"
         :aria-label="getDotTitle(index)"
         :aria-selected="isCurrentDot(index) ? 'true' : 'false'"
-        v-bind:class="{ 'VueCarousel-dot--active': isCurrentDot(index) }"
         v-on:click="goToPage(index)"
-        :style="dotStyle(index)"
+        :data-active="isCurrentDot(index) ? 'true' : 'false'"
+        :data-prev="carousel.currentPage >= index && index !== 0"
+        :data-first="index === 1"
       ></button>
     </div>
-  </div>
 </template>
 
 <script>
@@ -144,8 +143,8 @@ export default {
 };
 </script>
 
-<style scoped>
-.VueCarousel-pagination {
+<style>
+/* .VueCarousel-pagination {
   width: 100%;
   text-align: center;
 }
@@ -180,5 +179,5 @@ export default {
 
 .VueCarousel-dot:focus {
   outline: 1px solid lightblue;
-}
+} */
 </style>
