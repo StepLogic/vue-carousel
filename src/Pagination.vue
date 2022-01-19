@@ -36,9 +36,7 @@ export default {
       return paginationPosition;
     },
     paginationPropertyBasedOnPosition() {
-      return this.carousel.paginationPosition.indexOf("left") >= 0
-        ? "bottom"
-        : "left";
+      return this.carousel.paginationPosition;
     },
     paginationCount() {
       return this.carousel && this.carousel.scrollPerPage
