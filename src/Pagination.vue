@@ -29,9 +29,6 @@ export default {
   name: "pagination",
   inject: ["carousel"],
   computed: {
-    paginationPropertyBasedOnPosition() {
-      return this.carousel.paginationPosition;
-    },
     paginationCount() {
       return this.carousel && this.carousel.scrollPerPage
         ? this.carousel.pageCount
