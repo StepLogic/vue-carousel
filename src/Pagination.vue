@@ -3,7 +3,7 @@
       v-show="carousel.pageCount > 1"
        class="indicator"
         role="tablist" 
-        :data-position='paginationPropertyBasedOnPosition'
+        :data-position='carousel.paginationPosition'
         >
       <div
         v-for="(page, index) in paginationCount"
@@ -29,12 +29,6 @@ export default {
   name: "pagination",
   inject: ["carousel"],
   computed: {
-    paginationPositionModifierName() {
-      const { paginationPosition } = this.carousel;
-      // guard to add only required class modifiers
-      if (paginationPosition.indexOf("overlay") < 0) return;
-      return paginationPosition;
-    },
     paginationPropertyBasedOnPosition() {
       return this.carousel.paginationPosition;
     },
@@ -42,24 +36,6 @@ export default {
       return this.carousel && this.carousel.scrollPerPage
         ? this.carousel.pageCount
         : this.carousel.slideCount || 0;
-    },
-    dotContainerStyle() {
-      const { carousel } = this;
-      if (carousel.maxPaginationDotCount === -1)
-        return {
-          "margin-top": `${carousel.paginationPadding * 2}px`
-        };
-      const doublePadding = carousel.paginationPadding * 2;
-      const containerWidth =
-        carousel.maxPaginationDotCount *
-        (carousel.paginationSize + doublePadding);
-      return {
-        "margin-top": `${carousel.paginationPadding * 2}px`,
-        overflow: "hidden",
-        width: `${containerWidth}px`,
-        margin: "0 auto",
-        "white-space": "nowrap"
-      };
     },
     cssVar(index) {
       return { "--index": index };
