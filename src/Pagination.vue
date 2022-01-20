@@ -137,7 +137,8 @@ export default {
 }
 .indicator[data-position="left"] {
   bottom: 52vh;
-  left: 3.125rem;
+  left: 46vw;
+  transform: rotateZ(90deg);
 }
 @media only screen and (max-width: 600px) {
   .indicator[data-position="bottom"] {
